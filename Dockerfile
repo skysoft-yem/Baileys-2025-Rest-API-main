@@ -22,7 +22,7 @@ COPY package.json yarn.lock* package-lock.json* ./
 COPY engine-requirements.js ./
 
 # Install dependencies
-RUN if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
+RUN if [ -f yarn.lock ]; then yarn install; \
     elif [ -f package-lock.json ]; then npm ci; \
     else npm install; fi
 
