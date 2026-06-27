@@ -19,12 +19,13 @@ RUN apk add --no-cache \
 
 # Copy package files
 COPY package.json yarn.lock* package-lock.json* ./
+COPY tsconfig.json ./
 COPY engine-requirements.js ./
 
 # Install dependencies
-RUN if [ -f yarn.lock ]; then yarn install; \
-    elif [ -f package-lock.json ]; then npm ci; \
-    else npm install; fi
+RUN if [ -f yarn.lock ]; then yarn install --ignore-scripts; \
+    elif [ -f package-lock.json ]; then npm ci --ignore-scripts; \
+    else npm install --ignore-scripts; fi
 
 # Copy source code
 COPY . .
