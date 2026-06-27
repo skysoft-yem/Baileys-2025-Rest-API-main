@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apk add --no-cache \
+    git \
     python3 \
     make \
     g++ \
@@ -18,6 +19,7 @@ RUN apk add --no-cache \
 
 # Copy package files
 COPY package.json yarn.lock* package-lock.json* ./
+COPY engine-requirements.js ./
 
 # Install dependencies
 RUN if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
