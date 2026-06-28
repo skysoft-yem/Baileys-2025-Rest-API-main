@@ -1,8 +1,8 @@
 import makeWASocket from './Socket'
 
 export * from '../WAProto'
-export * from './Utils'
-export * from './Types'
+export * from './utils'
+export * from './types'
 export * from './Defaults'
 export * from './WABinary'
 export * from './WAM'
